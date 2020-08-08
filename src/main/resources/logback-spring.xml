@@ -3,7 +3,7 @@
 
     <contextName>TcSem</contextName>
     <property name="LOG_PATH" value="logs"/>
-    <property name="APP_NAME" value="image-processor"/>
+    <property name="APP_NAME" value="dutil"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

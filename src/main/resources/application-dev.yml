@@ -1,0 +1,75 @@
+
+server:
+  servlet:
+    context-path: /adagent
+  port: 8089
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.1.241:32706/adagent_mc?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: yike_admin
+    password: dF3$B5!7ay69
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: true
+      minimum-idle: 10
+      idle-timeout: 60000
+      connection-timeout: 60000
+      max-lifetime: 1800000
+      pool-name: DatebookHikariCP
+      maximum-pool-size: 20
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+    cache:
+      type: guava
+    open-in-view: true
+  mail:
+    host: smtp.exmail.qq.com
+    username: unimarketing@qknode.com
+    password: Uni123456
+    port: 465
+    properties:
+      from: unimarketing@qknode.com
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  redis:
+    database: 9
+    host: 192.168.1.29
+    port: 7033
+    password: qknodeonline
+    timeout: 1000
+    jedis:
+      pool:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10
+
+guava:
+  expire:
+    time: 120
+app:
+  id: adagent
+apollo:
+  meta: http://192.168.1.23:8089,http://192.168.1.25:8089,http://192.168.1.9:8089
+
+logging:
+  config: classpath:logback-dev.xml
+
+
+

@@ -1,4 +1,4 @@
-package com.victo.dtool.cache;
+package com.dutil.cache;
 
 import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;
@@ -8,16 +8,16 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class TestCache {
+public class Cache {
 
-    public TestCache() {
+    public Cache() {
         init();
     }
 
     public static LoadingCache<String, String> cache;
 
     public void init() {
-        CacheLoader<String, String> dataLoader = TestCache::setValue;
+        CacheLoader<String, String> dataLoader = Cache::setValue;
         cache = Caffeine.newBuilder()
                 .maximumSize(100)
                 .expireAfterWrite(5, TimeUnit.SECONDS)
@@ -30,11 +30,11 @@ public class TestCache {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        TestCache testCache = new TestCache();
+        Cache cache = new Cache();
         String key = "abc";
         while (true) {
             Thread.sleep(1000);
-            log.info("key: {}, value: {}", key, cache.get(key));
+            log.info("key: {}, value: {}", key, Cache.cache.get(key));
         }
     }
 
