@@ -2,7 +2,7 @@ package com.dutil.collection;
 
 import lombok.Data;
 
-import java.util.Arrays;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -45,6 +45,36 @@ public class LoopList<T> {
         while (page++ < totalPage) {
             totalPage = action.accept(page);
         }
+    }
+
+
+    /**
+     * 从list中随机取出num个元素
+     * @param list
+     * @param num
+     * @param <K>
+     * @return
+     */
+    public static <K> List<K> randomList(List<K> list, int num) {
+        Set<Integer> map = new HashSet();
+        List<K> newList = new ArrayList();
+        Set<K> set = new HashSet<>(list);
+        if (set.size() <= num) {
+            return new ArrayList<>(set);
+        } else {
+            while (newList.size() < num) {
+                Random random = new Random();
+                int r =random.nextInt(list.size());
+                if (!map.contains(r)) {
+                    map.add(r);
+                    K k = list.get(r);
+                    if(k!=null) {
+                        newList.add(k);
+                    }
+                }
+            }
+        }
+        return newList;
     }
 
     @FunctionalInterface

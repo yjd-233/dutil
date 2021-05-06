@@ -10,9 +10,59 @@ import java.util.List;
 public class test {
 
 
+
     public static void main(String[] args) {
         test test = new test();
-        System.out.println(test.myAtoi("+4193 with words123"));
+        System.out.println(test.longestCommonPrefix(new String []{"aa", "a"}));
+    }
+
+    public int compareVersion(String version1, String version2) {
+        String[] a1 = version1.split("\\.");
+        String[] a2 = version2.split("\\.");
+
+        for(int n = 0; n < Math.max(a1.length, a2.length); n++){
+            int i = (n < a1.length ? Integer.valueOf(a1[n]) : 0);
+            int j = (n < a2.length ? Integer.valueOf(a2[n]) : 0);
+            if(i < j) return -1;
+            else if(i > j) return 1;
+        }
+        return 0;
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+        if (strs.length == 0) {
+            return "";
+        }
+        if (strs.length == 1) {
+            return strs[0];
+        }
+
+        boolean flag = true;
+        int count = 0;
+        while (flag) {
+            if (strs[0].length() > count) {
+                char c = strs[0].charAt(count);
+                for (int i = 1; i < strs.length; i++) {
+                    if (strs[i].length() <= count || strs[i].charAt(count) != c) {
+                        flag = false;
+                    }
+                }
+            } else {
+                flag = false;
+            }
+            count++;
+        }
+        return strs[0].substring(0, count - 1);
+    }
+
+    public int maxArea(int[] height) {
+        int max = 0;
+        for (int i = 0; i < height.length - 1; i++) {
+            for (int j = i + 1; j < height.length; j++) {
+                max = Math.max((j - i) * Math.min(height[i], height[j]), max);
+            }
+        }
+        return max;
     }
 
     /**
