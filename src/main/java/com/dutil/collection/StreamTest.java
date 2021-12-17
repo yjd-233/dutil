@@ -7,15 +7,20 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author yangjiandong
  * @date 2020/8/7
  */
-public class Stream {
+public class StreamTest {
 
+    /**
+     * 生成
+     */
     public void stream() {
-
+        java.util.stream.Stream<Double> limit = Stream.generate(Math::random).limit(5);
+        java.util.stream.Stream<Integer> stream = Stream.iterate(0, n -> n + 2).limit(5);
     }
 
     public void list() {

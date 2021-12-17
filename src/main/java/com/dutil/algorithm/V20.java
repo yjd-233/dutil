@@ -7,12 +7,12 @@ import java.util.List;
  * @author yangjiandong
  * @date 2020/6/30
  */
-public class test {
+public class V20 {
 
 
 
     public static void main(String[] args) {
-        test test = new test();
+        V20 test = new V20();
         System.out.println(test.longestCommonPrefix(new String []{"aa", "a"}));
     }
 

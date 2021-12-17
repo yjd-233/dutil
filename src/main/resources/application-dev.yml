@@ -69,7 +69,7 @@ apollo:
   meta: http://192.168.1.23:8089,http://192.168.1.25:8089,http://192.168.1.9:8089
 
 logging:
-  config: classpath:logback-dev.xml
+  config: classpath:logback-spring.xml
 
 
 
